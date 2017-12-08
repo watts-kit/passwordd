@@ -15,11 +15,11 @@ The response is also a json object containing of two entries:
 ```
 {"result":"<result>", "value":"<value>"}
 ```
-The <result> can either be:
+The `<result>` can either be:
  - "ok" : everything went fine
  - "error" : an error occured
 
-The <value> contains the secret in case of a successful get request,
+The `<value>` contains the secret in case of a successful get request,
 else it is just empty.
 
 
