@@ -35,6 +35,15 @@ def set_secret(key, secret):
         return "secret set"
     return "secret NOT set"
 
+def overwrite_secret(key, secret):
+    sock = connect()
+    message = json.dumps({"action":"overwrite", "key":key, "value":secret})
+    sock.send(message)
+    response = receive_and_close(sock)
+    if response["result"] == "ok":
+        return "secret set"
+    return "secret NOT set"
+
 
 
 def main():

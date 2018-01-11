@@ -15,6 +15,11 @@ func SetPassword(key string, value string) (string, error) {
 	return sendAndCheckResponse(Request{"set", key, value}, conn)
 }
 
+func OverwritePassword(key string, value string) (string, error) {
+	conn := connect()
+	return sendAndCheckResponse(Request{"overwrite", key, value}, conn)
+}
+
 func Version() string {
 	return version
 }

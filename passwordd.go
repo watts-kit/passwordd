@@ -18,10 +18,11 @@ const (
 	description = "Simple Password storing daemon"
 
 	// port which daemon should be listen
-	port = "127.0.0.1:6969"
+	//port = "127.0.0.1:6969"
+	port = "0.0.0.0:6969"
 
 	// the current version
-	version = "1.0.0"
+	version = "1.0.1"
 )
 
 // dependencies that are NOT required by the service, but might be used
@@ -154,6 +155,15 @@ func handleClient(client net.Conn, passwords map[string]string) {
 			if exists == true {
 				client.Write(error_data_out)
 			} else {
+				passwords[request.Key] = request.Value
+				client.Write(good_data_out)
+			}
+		} else if request.Action == "overwrite" {
+			_, exists := passwords[request.Key]
+			good_response := &Response{"ok", ""}
+			good_data_out, _ := json.Marshal(good_response)
+			if exists == true {
+				delete(passwords, request.Key)
 				passwords[request.Key] = request.Value
 				client.Write(good_data_out)
 			}
