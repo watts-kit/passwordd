@@ -1,0 +1,12 @@
+passwordd (0.0.9) UNRELEASED; urgency=medium
+
+  * Initial release.
+  * Improve initscripts
+  * postrm -> prerm
+  * fix install and upgrade terror 
+  * next try
+  * test
+  * Automatically start passwordd
+  * fix typo in passworddsync
+
+ -- Marcus Hardt <marcus@hardt-it.de>  Thu, 11 Jan 2018 19:57:36 +0100
