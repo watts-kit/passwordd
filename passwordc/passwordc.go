@@ -39,7 +39,7 @@ func main() {
 			fmt.Println("error getting password")
 			os.Exit(3)
 		}
-		fmt.Println("returned secret: ", password)
+		fmt.Printf("returned secret: '%s'\n", password)
 	case set_pwd.FullCommand():
 		fmt.Print("please enter the secret: ")
 		reader := bufio.NewReader(os.Stdin)
