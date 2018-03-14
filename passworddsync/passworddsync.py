@@ -44,10 +44,16 @@ def receive_and_close(sock):
     return response
 
 def get_secret(host_port, key):
+    if args.verbose > 0:
+        print ("connecting to: %s" % str(host_port))
     sock = connect(host_port)
     message = json.dumps({"action":"get", "key":key})
     sock.send(message)
+    if args.verbose > 2:
+        print ("sending message: '%s'" % message)
     response = receive_and_close(sock)
+    if args.verbose > 2:
+        print ("Response: '%s'" % response)
     if response["result"] == "ok":
         return response["value"]
     return ""
@@ -65,15 +71,17 @@ def overwrite_secret(host_port, key, secret):
     sock = connect(host_port)
     message = json.dumps({"action":"overwrite", "key":key, "value":secret})
     sock.send(message)
+    if args.verbose > 2:
+        print ("sending message: '%s'" % message)
     response = receive_and_close(sock)
     if response["result"] == "ok":
         return "secret set"
     return "secret NOT set"
 
 
+args = parseOptions()
 def main():
-    args = parseOptions()
-    if args.verbose > 1:
+    if args.verbose > 0:
         print("keys: %s" % str(args.key))
 
     source = (args.pullhost, args.pullport)
@@ -85,7 +93,9 @@ def main():
     for key in args.key[0]:
         # check if key is available in destination
         dst_secret = get_secret(destin, key)
-        # if dst_secret:
+        if args.verbose > 2:
+            print ("got dst_secret: %s" % dst_secret)
+        # if dst_secret: # i.e. if overwriting is not intended 
         #     print('Secret "%s" is already available in destination at %s:%d' %
         #           (key, args.pullhost, args.pullport))
         #     # -=> skip to next
@@ -94,16 +104,27 @@ def main():
             print ('    Got dest:%s' % dst_secret)
         # check if key is available in source
         src_secret = get_secret(source, key)
-        if not dst_secret:
+        if args.verbose > 2:
+            print ('    Got src: %s' % src_secret)
+        if not src_secret:
             print('Cannot get secret for "%s" from %s:%d' %
-                  (key, args.pushhost, args.pushport))
+                  (key, args.pullhost, args.pullport))
             # -=> warning and skip to next
             continue
-        if args.verbose > 1:
+        if args.verbose > 2:
             print ('    Got src: %s' % src_secret)
         # get in source // happened above
         # set in destination
-        overwrite_secret(destin, key, src_secret)
+        result = set_secret(destin, key, src_secret)
+        if args.verbose > 0:
+            print ("setting new secret. Result: '%s' " % result)
+        if result == 'secret NOT set':
+            if args.verbose > 0:
+                print ("setting didn't work, overwriting")
+            result = overwrite_secret(destin, key, src_secret)
+            if args.verbose > 0:
+                print ("overwriting old secret. Result: '%s' " % result)
+
         if args.verbose > 0:
             print('copied secret for "%s"' % key)
 
