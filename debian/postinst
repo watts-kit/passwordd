@@ -5,11 +5,11 @@ exec 2>> /tmp/log
 
 echo -e "\n$0 $@"
 
-test -e /etc/systemd/system/passwordd.service || {
+test -e /lib/systemd/system/passwordd.service || {
     /usr/bin/passwordd install
     passwordd install
 }
 systemctl enable passwordd
 service passwordd start
 
-update-rc.d passworddsync defaults
+systemctl enable passworddsync

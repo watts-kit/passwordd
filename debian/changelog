@@ -1,4 +1,4 @@
-passwordd (1.1) UNRELEASED; urgency=medium
+passwordd (2.0) UNRELEASED; urgency=medium
 
   * Initial release.
   * Improve initscripts
@@ -14,5 +14,6 @@ passwordd (1.1) UNRELEASED; urgency=medium
   * add systemd script for password service 
   * Integrate fixes from first runs
   * Merge all updates into main branch
+  * Move towards systemd
 
- -- Marcus Hardt <hardt@kit.edu>  Wed, 14 Mar 2018 17:36:28 +0100
+ -- Marcus Hardt <marcus@nemo.hardt-it.de>  Mon, 29 Jul 2019 13:21:28 +0200
