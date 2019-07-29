@@ -15,7 +15,7 @@ service passwordd stop
 
 test -e /usr/bin/passwordd && {                                            
     echo "passwordd seems to exist"                                        
-    test -e /etc/systemd/system/passwordd.service && {
+    test -e /lib/systemd/system/passwordd.service && {
         echo "passwordd seems to exist also in systemd"                    
         /usr/bin/passwordd remove                                          
     }                                                                      
