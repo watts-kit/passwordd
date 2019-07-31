@@ -9,6 +9,5 @@ test -e /lib/systemd/system/passwordd.service || {
     passwordd install
 }
 systemctl enable passwordd
-service passwordd start
 
 systemctl enable passworddsync
