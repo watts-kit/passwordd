@@ -27,5 +27,5 @@ install: compile client
 
 clean:
 	rm -rf $(INSTALL_PATH)
-	rm passwordc/passwordc
-	rm passwordd
+	rm -f passwordc/passwordc
+	rm -f passwordd
