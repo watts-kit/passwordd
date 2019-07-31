@@ -1,7 +1,6 @@
 #!/bin/sh
 
-exec >> /tmp/log
-exec 2>> /tmp/log
+set -e
 
 echo -e "\n$0 $@"
 

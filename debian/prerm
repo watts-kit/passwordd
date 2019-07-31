@@ -2,9 +2,6 @@
 
 set -e
 
-exec >> /tmp/log
-exec 2>> /tmp/log
-
 echo -e "\n$0 $@"
 
 service passworddsync stop
@@ -17,7 +14,8 @@ test -e /usr/bin/passwordd && {
     echo "passwordd seems to exist"                                        
     test -e /lib/systemd/system/passwordd.service && {
         echo "passwordd seems to exist also in systemd"                    
-        /usr/bin/passwordd remove                                          
+        /usr/bin/passwordd remove  ||
+            rm /lib/systemd/system/passwordd.service
     }                                                                      
 }                                                                          
                                                                             
