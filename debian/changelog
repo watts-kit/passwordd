@@ -1,4 +1,4 @@
-passwordd (2.0) UNRELEASED; urgency=medium
+passwordd (2.1) UNRELEASED; urgency=medium
 
   * Initial release.
   * Improve initscripts
@@ -15,5 +15,7 @@ passwordd (2.0) UNRELEASED; urgency=medium
   * Integrate fixes from first runs
   * Merge all updates into main branch
   * Move towards systemd
+  * Add post starup delay to systemd unit file
+  * 
 
- -- Marcus Hardt <marcus@nemo.hardt-it.de>  Mon, 29 Jul 2019 13:21:28 +0200
+ -- Marcus Hardt <marcus@hardt-it.de>  Wed, 31 Jul 2019 15:03:41 +0200
