@@ -2,7 +2,7 @@ Source: passwordd
 Maintainer: Marcus Hardt <hardt@kit.edu>
 Section: misc
 Priority: optional
-Build-Depends: python, golang
+Build-Depends: python3, golang
 Standards-Version: 4.0.0
 
 Package: passwordd
