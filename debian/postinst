@@ -12,3 +12,4 @@ systemctl enable passwordd
 systemctl start passwordd
 
 systemctl enable passworddsync
+systemctl start passworddsync
