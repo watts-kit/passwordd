@@ -1,2 +1,5 @@
 debian/files
 debian/.debhelper
+debian/passwordd
+passwordc/passwordc
+passwordd
