@@ -9,5 +9,6 @@ Package: passwordd
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
                 python (>= 2.7),
+                network-pingable (>0.0.1)
 Description: Little daemon and Commandline tools for storing and exchanging
  passwords

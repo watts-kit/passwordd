@@ -1,4 +1,4 @@
-passwordd (2.1.10) UNRELEASED; urgency=medium
+passwordd (2.1.11) UNRELEASED; urgency=medium
 
   * Initial release.
   * Improve initscripts
@@ -17,5 +17,6 @@ passwordd (2.1.10) UNRELEASED; urgency=medium
   * Move towards systemd
   * Add post starup delay to systemd unit file
   * Extended configurability of passworddsync
+  * Add dependence on network-pingable
 
- -- Marcus Hardt <marcus@hardt-it.de>  Wed, 31 Jul 2019 15:03:41 +0200
+ -- Marcus Hardt <marcus@hardt-it.de>  Thu 10 Jun 2021 11:44:11 AM CEST
