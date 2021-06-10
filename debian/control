@@ -2,12 +2,13 @@ Source: passwordd
 Maintainer: Marcus Hardt <hardt@kit.edu>
 Section: misc
 Priority: optional
-Build-Depends: python, golang
+Build-Depends: python3, golang
 Standards-Version: 4.0.0
 
 Package: passwordd
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends},
                 python (>= 2.7),
+                network-pingable (>0.0.1)
 Description: Little daemon and Commandline tools for storing and exchanging
  passwords
